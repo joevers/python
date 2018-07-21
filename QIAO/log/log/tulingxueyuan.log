@@ -1,0 +1,12 @@
+DEBUG:root:This is a debug log
+WARNING:root:This is a warning log
+DEBUG:root:This is a debug log
+WARNING:root:This is a warning log
+DEBUG:root:This is a debug log
+WARNING:root:This is a warning log
+DEBUG:root:This is a debug log
+WARNING:root:This is a warning log
+2018-07-11 16:51:25,609=====DEBUG+++++This is a debug log
+2018-07-11 16:51:25,620=====WARNING+++++This is a warning log
+2018-07-11 16:52:29,661=====DEBUG+++++This is a debug log
+2018-07-11 16:52:29,666=====WARNING+++++This is a warning log
