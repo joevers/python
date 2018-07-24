@@ -70,12 +70,10 @@
         
 - UserAgent
     - UserAgent: 用户代理, 简称UA, 属于heads的一部分,服务器通过UA来判断访问者的身份
-    - 常见的UA值, 使用的时候可以直接复制粘贴, 也可以用浏览器访问的时候抓包
-             
+    - 常见的UA值, 使用的时候可以直接复制粘贴, 也可以用浏览器访问的时候抓包    
              
         - 见课程笔记
-                  
-             
+                     
     - 设置UA可以通过两种方式:
         - heads
         - add_header
@@ -94,3 +92,158 @@
         - 4.安装Opener
     - 案例v10
     
+- cookie & session
+    - 由于http协议的无记忆性,人们为了弥补这个缺陷, 所采用的一个补充协议
+    - cookie是发放给用户(即http浏览器)的一段信息,session是保存在服务器上的对应的另一半信息,用来记录用户的信息
+    
+- cookie 和session的区别
+    - 存放的位置不同
+    - cookie不安全
+    - session会保存在服务器上一定时间
+    - 单个cookie保存数据不超过4k,很多浏览器限制一个站点最多保存20个
+- session的存放位置
+    - 存在服务器
+    - 一般情况下,session是放在内存中或者数据库中
+    - 没有cookie登录    案例v11    , 没有使用cookie则反馈的网页为未登录状态
+    
+- 使用cookie登录
+    - 直接复制cookie,然后手动放入请求头, 案例 v12
+    - http模块包含一些关于cookie的模块, 通过他们我们可以自动使用cookie
+        - CookieJar
+            - 管理储存cookie,向传出的http请求添加cookie
+            - cookie存储在内存中,CookieJar实例放回后cookie将消失
+            
+        - FileCookieJar(filename, delayload=None, policy=None):
+            - 使用文件管理cookie
+            - filename是保存cookie的文件
+            
+        - MozillaCookieJar(filename, delayload=None, policy=None):
+            - 创建与mocilla浏览器cookie.txt兼容的FileCookieJar实例
+            
+        - LwpCookieJar(filename, delayload=None, policy=None):
+            - 创建与libwww-perl标准兼容的Set-Cookie3格式的FileCookieJar实例
+            
+        - 他们的关系是: CookieJar-->FileCookieJar-->MozillaCookieJar & LwpCookieJar
+    - 利用cookiejar访问   案例v13
+        - 自动使用cookie登录, 大致流程是
+        - 打开登录页面后自动通过用户名密码登录
+        - 自动提取反馈回来的cookie
+        - 利用提取的cookie登录隐私页面
+    - handler是Handler的实例,常用参看案例代码
+        - 用来处理复杂请求
+            
+            #生成 cookie的管理器
+            cookie_handler = request.HTTPCookieProcessor(cookie)
+            #创建http请求管理器
+            http_handler = request.HTTPHandler()
+            #生成https请求管理器
+            https_handler = request.HTTPSHandler()
+         
+    - 创建handler后, 使用opener打开,打开后相应的业务由相应的handler处理
+    - cookie作为一个变量, 打印出来,    案例v14
+        - cookie的属性
+            - name: 名称
+            - value: 值
+            - domain: 可以访问此cookie的域名
+            - path: 可以访问此cookie的页面路径
+            - expires: 过期时间
+            - size: 大小
+            - Http字段
+    - cookie的保存-FileCookieJar,   案例v15
+    - cookie 的读取     案例v16
+    
+- SSL
+    - SSL证书就是遵守SSL安全套阶层协议的服务器数字证书(SercureSocketLayer)
+    - CA(CertificateAuthority)是数字证书认证中心,是发放,管理,废除数字证书的收信人的第三方机构
+    - 遇到不信任的SSL证书,需要单独处理,  案例v17
+        
+- js加密
+    - 有的反爬虫策略采用js对需要传输的数据进行加密处理(通常是取md5值)
+    - 经过加密,传输的就是密文, 但是
+    - 加密函数或者过程一定是在浏览器完成, 也就是一定会把代码(js代码)暴露给使用者
+    - 通过阅读加密算法, 就可以模拟出加密过程, 从而达到破解
+    - 过程参看案例v18,   破解加密 v19
+    
+- ajax
+    - 异步请求
+    - 一定会有url,请求方法,可能会有数据
+    - 一般使用json格式
+    - 案例, 爬去豆瓣电影    v20
+    
+# Requests-献给人类
+- HTTP for Humans, 更简洁更友好
+- 继承了urllib的所有特征
+- 底层是用的是urllib3
+- 开源地址:  https://github.com/requests/requests
+- 中文文档:  http://docs.python-requests.org/zh_CN/latest/index.html
+- 安装: conda install requests
+- get 请求
+    - requests.get(url)
+    - requests.request("get",url)
+    - 可以带有headers和parmas参数
+    - 案例v21
+- get 返回的内容
+    - 案例v22
+    
+- post
+    - rsp = requests.post(url,data=data)
+    -案例v23
+    - data, headers需要dict类型
+    
+- proxy(代理)
+    - proxies = {
+        "http":"address of proxy",
+        "https":"address of proxy"
+        }
+        
+        rsp = requests.request("get", "http:xxxxxxxxx", proxies=proxies)
+        
+    - 代理有可能报错,如果使用人数多,考虑安全问题,可能会被强行关闭
+    
+- 用户验证
+    - 代理验证  
+        - 可能需要使用HTTP basic Auth,  可以这样
+        - 格式为       用户名:密码@代理地址
+        - proxy = {"http":"chian:123456@192.168.1.123:4444"}
+        - 用法
+        - rsp = requests.get("http://baidu.com",proxies=proxy)
+- web客户端验证
+    - 如果遇到web客户端验证, 需要添加auth=(用户名,密码)
+    
+        auth=("test1","123456")#授权信息
+        rsp = requests.get("http://baidu.com",auth=auth)
+
+- cookie 
+    - requests可以自己处理cookie信息
+            
+            rsp = requests.get("http://xxxxxxx")
+            #如果对方服务器给传递过来cookie信息,则可以通过反馈的cookie属性得到
+            #返回一个cookiejar实例
+            cookiejar = rsp.cookies
+            
+            # 可以将CookieJar转换成字典
+            cookiedict = requests.utils.dict_from_cookiejar(cookiejar)
+            
+- session
+    - 跟服务器端的session不是同一个东西
+    - 模拟一次会话,从客户端浏览器链接到服务器开始, 到客户端浏览器断开
+    - 能让我们跨请求时保持某些参数,比如在同一个session实例发出的所有请求之间保持cookie
+    
+            #创建session对象,可以保持cookie值
+            ss = requests.session()
+            
+            headers = {"User-Agent", "xxxxxxxxxxxxx"}
+            
+            data = {"name":"xxxxxxxxxxxxxx"}
+            
+            #此时,由创建的session管理请求,负责发出请求
+            ss.post("http://baidu.com",data=data,headers=headers)
+            
+            rsp = ss.get("xxxxxxxx")
+            
+- https请求验证ssl证书
+    - 参数verify负责表示是否需要验证ssl证书,默认是True
+    - 如果不需要验证ssl证书,则设置成False,表示关闭
+    
+            rsp = requests.get("https://baidu.com", verify=False)
+            # 如果用verify=True访问12306,会报错,因为他的证书有问题
