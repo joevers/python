@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML常用的行级元素</title>
+</head>
+<body>
+    <!-- 链接标签 a标签  href属性,跟的是要跳转的网址
+                       target:_blank  在新窗口打开跳转的页面
+    -->
+    <a href="https://www.baidu.com">百度</a>
+
+    <!--路径问题  在实际开发中建议使用相对路径  -->
+    <!--绝对路径/home/tlxy/tulingxueyuan/python/web/02.html-->
+    <a href="02.html" target="_blank">跳转到本地的文件(02.html)</a>
+
+    <br>
+    <!--图像标签  img(单标签 不需要闭合)
+        src: 图片的地址(网络资源或者本地资源)
+        alt: 用于图片加载失败的替代文字(必须存在)
+        title:鼠标悬停在图片上的信息(可有可无)
+        width: 设置图片宽度
+        height: 设置图片的高度
+        注意: 一般只给图片设置宽度或者高度, 高度或者宽度会等比例放大或者缩小
+    -->
+    <img src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1208653306,2340702420&fm=27&gp=0.jpg" width="200" alt="这是图片标签" title="美女图">
+    <img src="./images/timg.jpeg" alt="美女图">
+
+    <br>
+    <!--文本标签-->
+        <!--加粗标签 b   strong(具有强调意义)
+            倾斜标签 i   em(具有强调意义)
+        -->
+        <b>src</b>: 图片的地址(网络资源或者本地资源)<br>
+        <i>alt</i>: 用于图片加载失败的替代文字(必须存在)<br>
+        <strong>title</strong>:鼠标悬停在图片上的信息(可有可无)<br>
+        <em>width</em>: 设置图片宽度<br>
+
+    <!--span  无语义的行级元素  一般span标签也是配合css使用 来设置文本当中的一部分内容-->
+    <span style="color:red"> 注意:</span> 一般只给图片设置宽度或者高度, 高度或者宽度会等比例放大或者缩小<br>
+
+    <!--html中常用的实体字符  &gt; : 大于号       &lt; : 小于号    &nbsp; : 空格   使用的时候可以百度搜索-->
+        1>2;<br>
+        1&gt2;<br>
+       注意: &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;一般只给图片设置宽度或者高度, 高度或者宽度会等比例放大或者缩小
+</body>
+</html>

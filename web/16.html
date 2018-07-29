@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>元素类型的切换</title>
+    <style>
+        div{
+            width:100px;
+            height:100px;
+            /*将块元素转换成内联元素*/
+            /*display:inline;*/
+
+            /*将块元素转换成内联块元素*/
+            display:inline-block;
+        }
+        .box1{
+            background:green;
+        }
+        .box2{
+            background:red;
+        }
+        .box3{
+            background:blue;
+        }
+        span{
+            width:100px;
+            height:100px;
+            background:pink;
+            /*将内联元素转换成块元素*/
+            /*display: block;*/
+
+            /*将内联元素转换成内联块元素**/
+            display:inline-block;
+        }
+
+        .item1{
+            width:200px;
+            height:200px;
+            background:red;
+
+            /*让元素隐藏   并且隐藏元素不会占据位置*/
+            display: none;
+        }
+        .item2{
+            /*把元素转换成块元素
+              还可以显示隐藏的元素*/
+            display:block;
+        }
+        .item3{
+            width:200px;
+            height:200px;
+            background:green;
+
+        }
+        .item3.div{
+            display:none;
+        }
+        /*当鼠标移动到item3的时候让字体显示*/
+        .item3.hover div{
+            font-size:30px;
+            display:block;
+        }
+    </style>
+</head>
+<body>
+    <div class="box1">1</div>
+    <div class="box2">2</div>
+    <div class="box3">3</div>
+
+
+    <br>
+    display属性是用来设置元素的类型及隐藏的,常用的属性有:
+    <span>- none  元素隐藏且不占位置</span>
+    <span>- block  元素以块元素显示</span>
+    <span>- inlien  元素以内联元素显示</span>
+    <span>- inlien-block  元素以内联块元素显示</span>
+
+    <br>
+    <div class="item1">1</div>
+    <div class="item1 item2">2</div>
+    <div class="item3">
+        <div>我显示了</div>
+    </div>
+</body>
+</html>

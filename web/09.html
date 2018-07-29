@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>颜色表示方式</title>
+    <style>
+        .item1{
+            width:200px;
+            height:200px;
+            /*使用英文单词来表示颜色*/
+            /*background-color:red;*/
+
+            /*使用十六进制的值来表示颜色  以#开始  一共有六位值  前两个代表红色 中间两个代表绿色 最后两个代表蓝色
+              取值范围是0-9 A-F
+              #000000 代表黑色 简写 #000
+              #ffffff 代表白色 简写 #fff
+            */
+            /*background-color:#000000;*/
+            /*background-color:#00ff00;*/
+            /*background-color:#0000ff;*/
+
+            /*使用rgb模式  每一个值代表一个颜色  0-255*/
+            /*background-color:rgb(255,0,0);*/
+
+            /*带透明度rgba()  最后一个值是透明度,取值范围为0-1之间的小数,0代表完全透明,1代表完全不透明*/
+            background-color:rgba(0,0,0,1);
+        }
+    </style>
+</head>
+<body>
+    <div class="item1"></div>
+</body>
+</html>

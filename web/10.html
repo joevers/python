@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>字体文本设置</title>
+    <style>
+        .fonts{
+            /*字体颜色*/
+            color:black;
+
+            /*字体大小(设置字号) font-size
+              谷歌浏览器中默认字体大小为16px,最小字体为12px*/
+            font-size:20px;
+
+            /*设置字体 font-family
+              注意: 如果设置的字体用户系统中不存在,会以默认字体显示 */
+            font-family: "微软雅黑";
+
+            /*设置文本字体是否为斜体 font-style   默认不倾斜*/
+            font-style: italic;
+
+            /*设置是否加粗 font-weight   默认不加粗*/
+            font-weight: bold;
+
+            /*设置行高  line-height*/
+            /*line-height:30px;*/
+
+            /*首行缩进 text-indent*/
+            text-indent:40px;
+
+            /*水平对齐方式  text-align  left center right*/
+            text-align:left;
+        }
+
+        a{
+            /*去除元素的下划线*/
+            text-decoration:none;
+        }
+
+        .item2{
+            width: 200px;
+            height:200px;
+            background-color: green;
+            /*利用line-height设置单行文本的垂直居中
+              注意: 在设置单行文本垂直居中的时候,只给父级元素的高度*/
+            line-height:200px;
+
+            /*水平对齐方式  text-align*/
+            text-align:center;
+        }
+    </style>
+</head>
+<body>
+    <div class="fonts">
+        - color:设置文本颜色
+        - font-size:设置文字大小
+        - font-family: 设置文字字体
+        - font-style: 设置字体是否倾斜
+        - font-weight: 设置文字是否加粗
+        - line-height: 设置文字的行高
+        - text-decoration: 设置文字下划线
+        - text-indent: 设置文字首行缩进
+        - text-align: 设置文字水平对其方式
+    </div>
+    <div class="item2">
+        设置文字的行高
+    </div>
+    <a href="http://baidu.com">百度</a>
+</body>
+</html>

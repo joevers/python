@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表单标签</title>
+</head>
+<body>
+    <!--form标签用来划定一个表单区域
+        action:数据提交的地址
+        method: 提交的方式  get    post
+                表单提交默认是以get方式进行数据的传输
+                get:通过url地址传输数据,数据会显示在url地址中
+                    传输数据大小有限制,根据浏览器的不同数据大小不同
+                    传输相对不安全
+                post:数据不通过url传参
+                     数据传输无大小限制
+                     传输相对安全
+                一般指定以post方式进行数据传输
+        enctype:如果表单当中有文件上传必须添加这个属性
+                指定属性为"multipart/form-data"  用于文件转码
+    -->
+    <form action="" method="post" enctype="multipart/form-data">
+        <!--表单控件
+            type:制定我们吃的表单类型(普通文本  密码框  单选框  多选框)
+            必须要填写name属性-->
+        用户名:<input type="text" name="username" value="" readonly><br>
+        密 码:<input type="password" name="password"><br>
+        <!--单选框  type="radio" 必须有name属性和value属性,并且一组单选框name属性的值必须相同-->
+        性 别:<input type="radio" name="sex" value="0" checked>男
+             <input type="radio" name="sex" value="1">女
+        <br>
+        <!--多选框  type="checkbox" 必须有name属性和value属性, 并且name属性的值必须相同-->
+        爱 好:<br>
+              <input type="checkbox" name="love" value="l">篮球<br>
+              <input type="checkbox" name="love" value="z">足球<br>
+              <input type="checkbox" name="love" value="p">乒乓球<br>
+        <!--下拉选项框 select  必须配合option使用-->
+        学 历:<br>
+             <select name="xl">
+                 <option value="1">小学</option>
+                 <option value="2">初中</option>
+                 <option value="3">高中</option>
+                 <option value="4">大学</option>
+             </select>
+        <!--文件上传-->
+        <br>
+        请选择上传文件:<input type="file" name="file">
+        <br>
+
+        请输入个人说明:<br>
+        <textarea name="text" id="" placeholder="请输入个人信息"></textarea>
+        <br>
+
+        <!--按钮 type="submit"-->
+        <input type="submit" value="确定"><br>
+        <button >提交</button>
+        <br>
+        <!--重置按钮-->
+        <input type="reset" disabled>
+
+        <!--隐藏域  hidden   不需要用户查看和填写的信息 -->
+        <input type="hidden" name="id" value="0">
+    </form>
+</body>
+</html>

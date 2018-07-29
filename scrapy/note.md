@@ -75,4 +75,77 @@
             - 跟process_request大同小异
             - 每次返回结果的时候会自动调用
             - 可以有多个,按顺序调用
-        - 
+        
+- 去重
+    - 为了防止爬虫陷入死循环,需要去重
+    -即在spider中的parse函数中,返回Request的时候加上dont_filter=False参数
+    
+            myspider(scrapy.Spider:
+                def parse(...):
+                
+                    ...
+                    
+                    yield scrapy.Request(url=url, callback=self.parse, dont_filter=False
+                    
+- 如何在scrapy使用selenium
+    - 可以放入中间件的process_request函数中
+    - 在函数中调用selenium,完成爬取后返回Response
+    
+            calss MyMiddleWare(object):
+                def process_request(...):
+                    
+                    driver = webdriver.Chrome()
+                    html = driver.page_ source
+                    driver.quit()
+                    
+                    return HtmlResponse(url=request.url, encoding='utf-8', body=html, request=euquest)
+# scrapy-shell
+- https://segmentfault.com/a/1190000013199636?utm_source=tag-newest
+- shell
+    - linux: ctrll+alt+T, 打开终端, 然后输入scrapy shell "url xxxx"
+    - windows: scrapy shell "url:xxxx"
+    - 启动后自动下载指定的url的网页
+    - 下载完成后,url的内容保存在response的变量中, 如果需要,我们需要调用response
+- response
+    - 爬取到的内容保存在response中
+    - response.body是网页的代码
+    - response.headers是返回的http的头信息
+    - response.xpath()允许使用xpath语法选择内容
+    - response.css()允许使用css语法选区内容
+- selector
+    - 选择器,允许用户使用选择器来选择自己想要的内容
+    - response.selector.xpath: response.xpath是selector.xpath的快捷方式
+    - response.selector.css: response.css是他的快捷方式
+    - selector.extract: 吧节点的内容用unicode形式返回
+    - selector.re: 允许用户通过正则选取内容
+    
+# 分布式爬虫
+- 单机爬虫的问题:
+    - 单机效率
+    - IO吞吐量
+- 多爬虫问题
+    - 数据共享
+    - 在空间上不同的多台机器,可以成为分布式
+- 需要做:
+    - 共享列队
+    - 去重
+- Redis
+    - 内存数据库
+    - 同时可以落地保存到硬盘
+    - 可以对保存的内容进行生命周期的控制
+    - 可以去重
+    - 可以把它理解成 dict, set, list的集合体
+    
+- 内容保存数据库
+    - MongoDB
+    - Mysql等传统关系数据库
+    
+- 安装scrapy_redis
+    - pip install scrapy_redis
+    - github.com/rolando/scrapy_redis
+    - scrapy-redis.readthedocs.org
+    
+# 推荐书籍
+- Python爬虫开发与项目实践,   范传辉  机械工业出版社
+- 精通 python爬虫框架scrapy,  李斌翻译   人民邮电出版社
+- 崔庆才
