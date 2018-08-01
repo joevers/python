@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>变量作用域</title>
+</head>
+<body>
+<script>
+    /*
+        全局变量: 在函数外部使用声明的变量是全局变量
+        局部变量: 在函数内部声明的变量是局部变量
+
+        如果函数内部有同名的局部变量,呢么函数内部优先使用局部变量的值
+            全局变量的作用域发生了改变,变成了局部变量,局部变量的值发生变化不会影响我们的全局变量
+     */
+    var a=1;
+    function demo(){
+        var b=2;
+        a=6;
+        console.log(a);
+    }
+    console.log(a);
+    demo();
+    // console.log(b)   //报错
+</script>
+</body>
+</html>

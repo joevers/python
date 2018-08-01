@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件的绑定</title>
+    <script src="./jquery-1.8.3/jquery.min.js"></script>
+    <style>
+        .item1{
+            width:100px;
+            height:100px;
+            background:red;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        console.log($('.item1'));
+        // 当页面加载完成后 触发 ready
+        $(document).ready(function () {
+            // 加载完成之后执行代码
+            console.log($('.item1'));
+            alert('哈哈')
+        });
+        //  当文档加载完成之后自动调用自己
+        $(function () {
+            console.log($('.item1'));
+        })
+    </script>
+    <div class="item1"></div>
+    <script>
+        // 基本事件的绑定
+        // 元素对象.onclick=function(){}  原生js
+        // 给item1绑定单击事件
+        // $('.item1').click(function () {
+        //     alert('单击事件被触发了')
+        // })
+        $('.item1').dblclick(function () {
+            alert('这是双击事件')
+        })
+
+        // 方法绑定  bind/on
+        $('.item1').bind('click',function () {
+            alert('单击事件又被触发了')
+        })
+        // 解除事件绑定
+            // 注意  如果不指定解除事件  那么会解除元素上所有事件
+            // 如果要解除指定的事件那就给他传指定事件的参数
+        $('.item1').unbind('click');
+        // $('.item1').on('click',function () {
+        //     alert('on方法')
+        // })
+    </script>
+</body>
+</html>

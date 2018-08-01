@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数组</title>
+</head>
+<body>
+<script>
+    //1.定义一个数组
+    var arr= new Array(1,2,3,4);
+    console.log(arr);
+    var arr1=['1',2,3,4,5];
+    console.log(arr1)
+
+    // 数组的操作方式
+    // 获取数组的长度 arr.length()
+    console.log(arr1.length);
+    // 获取数组索引为1的元素
+    console.log(arr1[1]);
+    // 修改arr1数组中索引值为1的元素
+    arr1[1]=10;
+    console.log(arr1);
+    console.log(arr1[1]);
+
+    // 给数组的最后添加一个元素  push
+    arr1.push(6,7);
+    console.log(arr1);
+    // 给数组的最后删除元素  pop  默认删除最后一个元素,只删除最后一个
+    arr1.pop(2);
+    console.log(arr1);
+
+    // 从数组的前面增加元素 unshift()   可以增加多个
+    arr1.unshift(0,1);
+    console.log(arr1);
+    // 从数组的前面删除元素  shift()   只能删除第一个
+    arr1.shift();
+    console.log(arr1);
+
+    // 增加或者删除数组中的元素  splice()  替换
+        /* 如果只有一个参数(n)  意味着从第n个元素开始删除所有剩下的元素
+           如果传了两个参数(n,m)   意味着从指定元素n开始删除指定m个元素
+               传了三个参数(n,m,x,y,z...)  第三个参数之后的参数x,y,z...是用来替换的参数
+         */
+    arr1.splice(1,2,9);
+    console.log(arr1);
+
+
+    // 多维数组
+    var arr2=[1,2,3,['1','2'],['a','b','c']]
+    console.log(arr2[3][0])
+</script>
+</body>
+</html>
