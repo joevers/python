@@ -336,3 +336,22 @@
         - 我们有鼠标和键盘按键的事件,在触发事件时如果我们要想获取鼠标的位置或者键盘的按键信息时,
           首先需要在当前的事件中传递一个事件对象 event
         - 案例28   29
+        
+        
+- jQuery元素节点操作
+- 创建节点
+    - var Div = $('<div>');
+    - var Div2 = $('<div>这是一个div元素</div>')
+- 插入节点
+    - 1.append()和appendTo(): 在现存元素的内部,从后面插入
+    - 2.prepend()和prependTo(): 在现存元素的内部,从前面插入
+    - 3.after()和insertAfter(): 在现存元素的外部,从后面插入元素
+    - 4.before()和insterBefore(): 在现存元素的外部,从前面插入元素
+    - 案例30
+- 删除节点
+    - $(element).remove()删除当前元素
+    - $(element).empty() 清空
+    - 案例30
+- 克隆节点
+    - $(element).clone(true)
+    - 案例30
