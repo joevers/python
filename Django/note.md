@@ -148,4 +148,50 @@
     - POST: 一个类似与字典的对象,包含post请求方式的所有参数
     - FILES: 一个类似于字典的对象,包含所有的上传文件
     - COOKIES: 一个标准的python字典,包含所有的cookie值, 键和值
-    - session:一个
+    - session: 一个既可读又可写的类似于字典的对象,表示当前的会话
+               - 只有当django启用会话的支持时才可用
+               - 详细内容见"状态保持"
+    - 方法
+        - is_ajax():如果请求是通过XMLHttpRequest发起的,则返回True
+        
+    - QueryDict对象
+        - 定义在django.http.QueryDict
+        - request对象的属性GET  POST都是QueryDict类型的对象
+        - 与python字典不同,QueryDict类型的对象用来处理同一个键带有多个值的情况
+        - 方法get():根据键获取值
+            - 只能获取键的一个值
+            - 如果一个键同时拥有多个值,则获取最后一个值
+        - 方法getlist():根据键获取值
+            - 将键的值以列表返回,可以获取一个键的多个值
+    - GET属性
+        - QueryDict类型的对象
+        - 包含get请求方式的所有参数
+        - 与url请求地址中的参数对应,位于?后面
+        - 参数的格式是键值对, 如 key1=value1
+        - 多个参数之间,使用&链接, 如key1=value1&key=value2
+        - 键是开发人员定下来的,值是可变的
+    - POST属性
+        - QueryDict类型的对象
+        - 包含post请求方式的所有参数
+        - 与form表单中的控件对应
+        - 表单中控件必须有name属性, name为键,value为值
+            - checkbox存在一键多值的问题
+        - 键是开发人员定下来的,值是可变的
+    
+- 手动编写视图
+    - 实验目的:
+        - 利用django快捷函数手动编写视图处理函数
+        - 编写过程中理解视图运行原理
+    - 分析:
+        - django把所有请求信息封装入request
+        - django通过 urls模块把相应请求跟事件处理函数连接起来,并把request作为参数传入
+        - 在相应的处理函数中,我们需要完成两部分
+            - 处理业务
+            - 把结果封装并返回,我们可以简单使用HttpResponse
+        - 本案例不介绍业务处理,把目光集中在如何渲染结果并返回
+    - render
+        - 使用模板和一个给定的上下文环境,返回一个渲染过的HttpResponse
+        - request: django的传入请求
+        - template_name: 模板名称
+        - content_instance: 上下文环境
+    - render_to_response
