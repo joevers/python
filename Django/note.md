@@ -194,4 +194,17 @@
         - request: django的传入请求
         - template_name: 模板名称
         - content_instance: 上下文环境
+        - 案例参看 teacher_views/teacher_app/views/render_test
     - render_to_response
+        - 根据给定的上下文字典渲染给定模板,返回渲染后的HttpResponse
+        
+- 系统内建视图
+    - 系统内建视图,可以直接使用
+    - 404
+        - default.page_not_found(request, template_name="404.html")
+        - 系统引发Http404时发出
+        - 默认传递request_path变量给模板,即导致错误的URL
+        - DEBUG=True则不会调用404, 取而代之的是调试信息(DEBUG在settings中)
+        - 404视图会被传递一个RequestContext对象并且可以访问模板上下文处理器提供的变量
+- 基于类的视图
+    
