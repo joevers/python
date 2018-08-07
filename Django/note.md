@@ -207,4 +207,113 @@
         - DEBUG=True则不会调用404, 取而代之的是调试信息(DEBUG在settings中)
         - 404视图会被传递一个RequestContext对象并且可以访问模板上下文处理器提供的变量
 - 基于类的视图
+    - 参看教学笔记
     
+# Models 模型
+- ORM
+    - ObjectRelationMap: 把面向对象思想转换成关系数据库思想
+    - 类对应表格
+    - 类中的属性对应表中的字段
+    - 在应用中的models.py文件中定义class
+    - 所有需要使用ORM的class都必须是models.Model的子类
+    - class中的所有属性对应表格中的字段
+    - 字段的类型都必须使用modles.xxx 不能使用python中的类型
+    - 在django中,models负责跟数据库交互
+- django链接数据库
+    - 自带默认数据库Sqlite3
+        - 关系型数据库
+        - 轻量级
+    - 建议开发用sqlite3,部署用Mysql之类数据库
+    
+        - 切换数据库在settings中进行设置
+             
+            # django链接mysql
+            DATABASES = [
+                'default' = {
+                    'ENGINE' : 'django.db.backends.mysql',
+                    'NAME' : '数据库名',
+                    'PASSWORD' : '数据库密码',
+                    'HOST' : '127.0.0.1',
+                    'PORT' : '3306',
+                }
+            ] 
+            
+        - 需要在项目文件下的__init__文件中导入pymysql包
+    
+# models类的使用
+- 定义和数据库表映射的类
+    - 在应用中的models.py文件中定义class
+    - 所有需要使用ORM的class都必须是models.Model的子类
+    - class中的所有属性对应表格中的字段
+    - 字段的类型都必须使用models.xxx不能使用python的类型
+- 字段常用的参数
+    - 1.max_length :规定数值的最大长度
+    - 2.blank : 是否允许字段为空,默认不允许
+    - 3.null : 在DB中控制是否保存为null,默认为false
+    - 4.default :默认值
+    - 5.unique : 唯一
+    - 6.verbose_name : 假名
+- 数据库的迁移
+    - 1. 在命令行中,生成数据迁移的语句(生成sql的语句)
+        - python3 manage.py makemigrations
+        
+    - 2. 在命令行中, 输入数据迁移指令
+        - python3 manage.py migrate
+        
+        ps: 如果迁移中没有出现变化或者报错,可以尝试强制迁移
+        强制迁移命令
+            python3 manage.py makemigrations 应用名
+            python3 manage.py migrate 应用名
+    - 3.对于默认数据库,为了避免混乱,如果数据库中没有数据,删除自带的sqlite3数据库
+    
+    
+# 1.查看数据库中的数据(详见课程笔记)
+- 1.启动命令行: python3 manage.py shell
+    ps:注意点: 对orm的操作分为静态函数和非静态函数两种,
+- 2.在命令行中导入对应的映射类
+    from 应用.models import 类名
+- 3.使用objects属性操作数据库 . onjects 是模型中实际和数据库进行交互的
+- 4.查询命令
+    - 类名.objects.all()查询数据库表中的所有内容,返回的结果是一个QuerySet类型
+    - 类名.objects.filter(条件)
+# 2. 添加数据
+- 对象 = 类()  # 使用类实例化对象
+- 对象.属性 = 值  # 给对应的对象的属性赋值
+- 对象.save()  # 必须要执行保存操作,否则数据没有进入数据库
+- python manage.py shell  命令行中添加数据
+
+- 具体过程
+    '''
+    from  应用名.models  import 类名
+    from myapp.models import Teacher
+    
+    
+    - 实例化对象
+    t = Teacher()
+    
+    - 给对象的属性赋值
+    t.name = "张三"
+    t.age = 18
+    t.adress = "北京"
+    
+    - 保存数据
+    t.save()
+    
+    '''
+    
+- 常见的查找方法
+1.通用查找格式: 属性名 __(用下面的内容) = 值  
+    - gt : 大于   例: t = Teacher.objects.filter(age__gt=18)
+    - gte : 大于等于
+    - lt : 小于
+    - lte : 小于等于
+    - range : 范围
+    - year : 年份
+    - isnull : 是否为空
+2. 查找等于指定值的格式: 属性名 = 值
+3. 模糊查找:  属性名__(使用下面的内容) = 值
+    - exact : 精确等于
+    - iexact : 不区分大小写
+    - contains : 包含
+    - startwith : 以...开头
+    - endwith : 以...结尾
