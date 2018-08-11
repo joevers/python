@@ -1,0 +1,62 @@
+- 基本用法
+    - 案例 1
+- 节点选择器
+    - 案例v2
+    - 调用string属性就可以得到节点内的文本
+    - 选择元素        
+        - 当有多个节点时,print(soup.p)这种选择方式只会输出第一个找到的结果
+    - 提取信息
+        - 获取名称  利用name属性
+        - 获取属性  调用attrs获取所有属性
+        - 获取内容  使用string属性
+    - 嵌套选择
+    - 关联选择
+        - 子节点和子孙节点  
+            - 获取直接子节点  调用contents/children属性
+            - 得到所有子孙节点  调用descendants属性
+        - 父节点和祖先节点
+            - 获取直接父节点  调用parent属性
+            - 获取所有祖先节点  调用parents属性
+        - 兄弟节点
+            - 获取上一个   next_sibling 
+            - 获取下一个   previous_sibling
+            - 获取前面所有  next_siblings
+            - 获取后面所有  previous_siblings
+    - 获取信息
+- 方法选择器
+    - 案例v3
+    - find_all()
+        - 返回所有能够查找到的元素组成的列表
+        - find_all(name, attrs, recursive, text, **kwargs)
+            - name 
+                - 传入名称查询
+                - 可以嵌套查询
+            - attrs
+                - 传入属性查询
+                - 参数类型是字典类型
+                - 得到的结果是列表形式
+                - 也可不调用attrs属性
+            - text 
+                - 用来匹配节点的文本
+                - 传入的形式可以是字符串,也可以是正则表达式
+    - find()
+        - 只返回单个元素, 即 匹配到的地一个元素
+
+    - find_parent()   返回直接父节点
+    - find_parents()    返回所有祖先节点
+    - find_next_siblings()   返回后面所有的兄弟节点
+    - find_next_sibling()    返回后面第一个兄弟节点
+    - find_previous_siblings()  返回前面所有兄弟节点
+    - find_previous_sibling()   返回钱一个兄弟节点
+    - find_all_next()   返回后面所有符合条件的所有节点
+    - find_next()    返回后面符合条件的地一个节点
+    - find_all_previous     返回前面所有符合条件的所有节点
+    - find_previous()    返回前面符合条件的地一个节点
+- CSS选择器
+    - 案例v4
+    - 调用select()方法,传入相应的CSS选择器
+        - select()方法支持嵌套选择
+    - 获取属性
+        - attrs
+    - 获取文本
+        - 除去string属性外,还可以使用 get_text()来获取

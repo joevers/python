@@ -13,8 +13,8 @@ url, data=None, headers={}, origin_req_host=None, unverifiable=False,method=None
 '''
 
 
-# request = urllib.request.Request('https://python.org')
-# response = urllib.request.urlopen(request)
+# 1 request = 1 urllib.1 request.Request('https://python.org')
+# response = 1 urllib.1 request.urlopen(1 request)
 
 # print(response.read().decode('utf-8'))
 
@@ -32,7 +32,7 @@ dict = {
 data = bytes(parse.urlencode(dict),encoding='utf-8')
 req = request.Request(url=url, data=data, headers=headers, method='POST')
 # 使用add_headers
-# req = request.Request(url=url, data=data, method='POST')
+# req = 1 request.Request(url=url, data=data, method='POST')
 # req.add_header('User-Agent','Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.84 Safari/537.36')
 
 res = request.urlopen(req)

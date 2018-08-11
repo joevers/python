@@ -1,5 +1,5 @@
 '''
-urllib 提供了parse模块
+1 urllib 提供了parse模块
 urlparse   实现url的识别和分段
 '''
 
@@ -10,7 +10,7 @@ print(type(result))
 print(result)
 '''
 输出结果为:
-<class 'urllib.parse.ParseResult'>
+<class '1 urllib.parse.ParseResult'>
 ParseResult(scheme='http', netloc='www.baidu.com', path='/index.html', params='user', 
             query='id=5', fragment='comment')
 1. :// 前面就是scheme,代表协议

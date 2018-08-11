@@ -15,7 +15,7 @@ print('=='*50)
 response = requests.get('https://www.12306.cn', verify=False)
 print(response.status_code)
 
-# InsecureRequestWarning: Unverified HTTPS request is being made. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+# InsecureRequestWarning: Unverified HTTPS 1 request is being made. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
 #   InsecureRequestWarning)
 
 # 上述情况出现一个警告  建议我们给他指定证书,

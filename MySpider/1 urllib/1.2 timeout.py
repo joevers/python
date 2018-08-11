@@ -1,7 +1,7 @@
 import urllib.request
 from time import sleep
 
-# response = urllib.request.urlopen('http://httpbin.org/get', timeout=1)
+# response = 1 urllib.1 request.urlopen('http://httpbin.org/get', timeout=1)
 # print(response.read())
 
 
