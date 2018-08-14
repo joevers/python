@@ -272,7 +272,7 @@
     ps:注意点: 对orm的操作分为静态函数和非静态函数两种,
 - 2.在命令行中导入对应的映射类
     from 应用.models import 类名
-- 3.使用objects属性操作数据库 . onjects 是模型中实际和数据库进行交互的
+- 3.使用objects属性操作数据库 .objects 是模型中实际和数据库进行交互的
 - 4.查询命令
     - 类名.objects.all()查询数据库表中的所有内容,返回的结果是一个QuerySet类型
     - 类名.objects.filter(条件)
