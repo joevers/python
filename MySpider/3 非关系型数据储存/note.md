@@ -1,3 +1,5 @@
+
+# MongoDB
 - 新建的mongodb的数据存在    /var/lib/mongodb/  下
 
 - 连接MongoDB    
@@ -65,3 +67,17 @@
     
 - 其他用法
     - 参见官方文档  http://api.mongodb.com/python/current/api/pymongo/
+    
+    
+    
+    
+    
+    
+    
+    
+    
+# redis
+- 输入   redis-cli    进入redis命令行模式
+- 输入   sudo /etc/init.d/redis-server start    启动redis服务
+- 输入   sudo /etc/init.d/redis-server stop     停止redis服务
+- 输入   sudo /etc/init.d/redis-server restart    重新启动redis服务

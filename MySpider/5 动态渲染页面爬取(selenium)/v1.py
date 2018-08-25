@@ -14,6 +14,7 @@ try:
     wait.until(EC.presence_of_all_elements_located((By.ID, 'content_left')))
     print(browser.current_url)
     print(browser.get_cookies())
-    print(browser.page_source)
+    html=browser.page_source
+    print(type(html))
 finally:
     browser.close()

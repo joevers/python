@@ -1,0 +1,12 @@
+import requests
+
+proxy = '111.155.116.245:8123'
+proxies = {
+    'http':'socks5://'+proxy,
+    'https':'socks5://'+proxy
+}
+try:
+    response = requests.get('http://httpbin.org/get', proxies=proxies)
+    print(response.text)
+except requests.exceptions.ConnectionError as e:
+    print(e.args)
